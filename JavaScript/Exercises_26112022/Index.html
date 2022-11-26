@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <h2>Task1</h2>
+    <label for="data">Insert data1</label><input type="text" id="data" style="display:block;"/>
+    <label for="">Make prediction</label><input type="text" id="prediction" style="display:block;"/>
+    <label for="">Insert data2</label><input type="text" id="data2" style="display:block;"/>
+    <label for="">Insert sign</label><input type="text" id="sign" style="display:block;"/>
+    <button onclick="getData()">Submit</button>
+
+    <h2>Task2</h2>
+    <script>
+        //task1
+        function getData()
+        {
+            let inputdata= document.getElementById("data");         
+            // console.log(typeof inputdata.value);
+            // console.log(typeof parseInt(inputdata1.value));
+
+            let inputprediction=document.getElementById("prediction");
+            let inputdata2=document.getElementById("data2")
+            let inputsign=document.getElementById("sign")
+            let realtype;
+            let result;
+            if(isNaN(parseInt(inputdata.value)) && isNaN(parseInt(inputdata2.value)) )
+            {
+               if(inputdata.value=="true" || inputdata.value=="false")
+              {
+                realtype=typeof true;
+                console.log(typeof true);
+              }else if(inputdata.value=="object")
+              {
+                realtype="object";
+                console.log("object");
+              }else
+              {               
+                realtype=typeof inputdata.value;
+                console.log(typeof inputdata.value);
+                operation(inputdata.value, inputdata2.value);
+              }              
+            }else
+            {
+                realtype=typeof(parseInt(inputdata.value));
+                console.log(typeof(parseInt(inputdata.value)));
+                operation(parseInt(inputdata.value), parseInt(inputdata2.value));           
+            }
+            function operation(value1, value2)
+            {
+                if(inputsign.value=="+")
+                {
+                    console.log(value1+value2);
+                    console.log(typeof (value1+value2))
+                }else if(inputsign.value=="-")
+                {
+                    console.log(value1-value2);
+                    console.log(typeof (value1-value2))
+                }else if(inputsign.value=="*")
+                {
+                    console.log(value1*value2);
+                    console.log(typeof (value1*value2))
+                }else if(inputsign=="/")
+                {
+                    console.log(value1/value2);
+                    console.log(typeof (value1/value2))
+                }
+            }
+            if(inputprediction.value==realtype)
+            {
+                console.log("You pass the exam :D")
+            }else
+            {
+                console.log("You not pass the exam :(")
+            }
+        }
+        // task 2
+        const milesPerKilometar=0.621;
+        let name="Determination";
+        let speed=17500;
+        let distanceToMars=225000000;
+        let distanceToMoon=384400;
+
+        console.log(milesPerKilometar)
+        console.log(name)
+        console.log(speed)
+        console.log(distanceToMars)
+        console.log(distanceToMoon)
+
+        console.log(typeof milesPerKilometar)
+        console.log(typeof name)
+        console.log(typeof speed)
+        console.log(typeof distanceToMars)
+        console.log(typeof distanceToMoon)
+
+        let milesToMars=milesPerKilometar*distanceToMars;
+        let hours=milesToMars/speed;
+        let days=hours/24
+
+        console.log(milesToMars)
+        console.log(hours);
+        console.log(days)
+    </script>
+</body>
+</html>
