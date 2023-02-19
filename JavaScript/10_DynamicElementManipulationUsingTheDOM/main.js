@@ -60,3 +60,59 @@ function output()
   alert(this.innerHTML);
   this.innerHTML="Test1"
 }
+
+//10.10
+class Person{
+    constructor(Number,Name)
+    {
+        this.Number=Number;
+        this.Name=Name;
+        this.Vote=0;
+    }
+}
+
+const Names=["Gjorgji","Simona", "Ivona", "Bojan", "Mihaela", "Petar", "Sara", "Martin"]
+const myFriends=[];
+
+window.onload=createTable(Names);
+function createTable(Names){
+
+for(let i=myFriends.length;i<Names.length;i++){
+    myFriends[i]=new Person(i+1,Names[i])   
+    
+    let tbl=document.getElementById("outputPeople");
+    let newRow=document.createElement("tr");
+    newRow.addEventListener("click", counter)
+    let cellData=document.createElement("td");
+    let cellDataName=document.createElement("td");
+    let cellDataVote=document.createElement("td");
+    cellData.innerText=myFriends[i].Number;
+    cellDataName.innerText=myFriends[i].Name;
+    cellDataVote.innerText=myFriends[i].Vote;
+    newRow.appendChild(cellData);
+    newRow.appendChild(cellDataName);
+    newRow.appendChild(cellDataVote);
+    tbl.appendChild(newRow);
+}
+}
+function counter()
+{
+    this.children[2].innerHTML=parseInt(this.children[2].innerHTML)+1;
+    console.log(this.children[2].innerHTML);
+}
+console.log(document.getElementById("addFriend").value)
+let btnAdd= document.getElementById("addNew");
+btnAdd.addEventListener("click", SaveData);
+function SaveData()
+{
+    if(document.getElementById("addFriend").value !="")
+    {
+        Names[Names.length]=document.getElementById("addFriend").value;
+        createTable(Names);
+        document.getElementById("addFriend").value="";
+        alert("The Person was added succesfully");
+    }else
+    {
+        alert("Input value cannot be empty")
+    }
+}
