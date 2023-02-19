@@ -39,20 +39,37 @@ function message(btn)
     alert(btn.innerHTML);
 }
 // //10.8
-// const names=["Simona", "Gjorgji", "Ivona", "Mihaela"];
-// const msg=document.getElementById("msg");
-// window.onload=build();
+const names=["Simona", "Gjorgji", "Ivona", "Mihaela"];
+const msg=document.getElementById("msg");
+window.onload=build();
 
-// function build()
-// {
-//     let tbl=document.getElementById("html");
-//     for(let i=0;i<names.length;i++)
-//     {
-//         tbl.innerHTML=tbl.innerHTML+`<tr><td>${names[i]}</td></tr>`
-//     }
-//     tbl.children.item(0).classList="box";
-//     console.log(tbl.children);
-// }
+function build()
+{
+    let tbl=document.getElementById("html");
+    for(let i=0;i<names.length;i++)
+    {
+    let newRow=document.createElement("tr");
+    newRow.classList="box";
+    newRow.setAttribute("data-row",i);
+    newRow.setAttribute("data-name",names[i]);
+    newRow.addEventListener("click", getData)
+    let cellData=document.createElement("td");   
+    cellData.innerText=names[i];   
+    newRow.appendChild(cellData);
+    tbl.appendChild(newRow);
+    }
+    tbl.children[0].children[0].classList="box"
+  
+}
+function getData()
+{
+    console.log(this);
+    let Name=this.getAttribute("data-name");
+    let Number=this.getAttribute("data-row");
+    document.getElementById("msg").innerHTML="The Name: "+Name+" is from row: "+Number;
+    document.getElementById("msg").style.color="blue";
+}
+
 //10.9
 document.getElementById("btn").addEventListener("click",output);
 function output()
@@ -114,5 +131,41 @@ function SaveData()
     }else
     {
         alert("Input value cannot be empty")
+    }
+}
+
+//10.11
+
+words=["mouse", "keyboard","adapter", "monitor"];
+
+function createObjekt(words)
+{
+    let word=words[Math.floor(Math.random()*words.length)];
+    let letters=[]
+    for(let i=0;i<word.length;i++)
+    {
+        letters[i]=word[i];
+    }
+
+    return {word:`${word}`, letters:`${letters}`};
+
+
+
+}
+
+const obj=createObjekt(words);
+
+let btnStart=document.getElementById("start");
+btnStart.addEventListener("click", startGame)
+
+function startGame()
+{
+    if(words.length !=0)
+    {
+        this.style.display="none";
+        document.getElementById("score").innerHTML=0;
+    }else
+    {
+        
     }
 }
