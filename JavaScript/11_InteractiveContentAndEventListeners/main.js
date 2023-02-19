@@ -112,4 +112,58 @@ function isNumber()
         alert("Insert number");
     }
 }
-//11.9
+//11.10
+j=0;
+function test(event)
+{
+    let obj={name:"", last:"", age:0};
+    let error=false
+     for(let i=0;i<document.getElementById("t").children.length;i++)
+    {
+
+        
+        if(document.getElementById("t").children[i].getAttribute("type")=="text")
+        {
+            if(document.getElementById("t").children[i].id=="f")
+            {
+                obj.name=document.getElementById("t").children[i].value;
+            }else if(document.getElementById("t").children[i].id=="l")
+            {
+                obj.last=document.getElementById("t").children[i].value;
+            }else
+            {
+                if(!isNaN(document.getElementById("t").children[i].value))
+                {
+                    obj.age=document.getElementById("t").children[i].value;
+
+                }else
+                {
+                    error=true;
+                }
+            }
+        }
+    }
+    if(!error)
+    {
+        event.preventDefault();
+        console.log("propagation set")
+        document.getElementById("sub").addEventListener("click", Ok);
+        
+    }
+
+}
+function Ok()
+{
+    alert("itsok")
+}
+
+function d(event)
+{
+    alert("Div");
+    event.preventDefault();
+    document.getElementById("bb").addEventListener("click",b);
+}
+function b()
+{
+    alert("Button");
+}
